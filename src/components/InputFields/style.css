@@ -1,0 +1,62 @@
+/**
+ * src/FloatingLabelInput.css
+ *
+ * @format
+ */
+
+.floating-label-input {
+	position: relative;
+	/* margin: 20px 0; */
+}
+
+/* .floating-label-input input {
+    width: 100%;
+    height: 100%;
+    padding: 10px 5px;
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 4px;
+    outline: none;
+  } */
+
+.floating-label-input label {
+	position: absolute;
+	left: 1px;
+	top: 50%;
+	font-family: "Sora";
+	transform: translateY(-50%);
+	transition: all 0.2s ease;
+	pointer-events: none;
+	font-size: 12px;
+	padding-left: 3px;
+	padding-right: 3px;
+	font-weight: 500;
+	background-color: transparent;
+	border-radius: 4px;
+	/* color: black; */
+}
+
+/* .floating-label-input input:not(:placeholder-shown) + label.focused {
+    top: 0;
+    left: 5px;
+    font-size: 14px;
+    color: black;
+    background-color: white;
+    padding-left: 3px;
+    padding-right: 3px;
+  } */
+
+.floating-label-input label.focused {
+	top: 0;
+	left: 1px;
+	font-family: "Sora";
+	font-size: 10px;
+	color: #d68776;
+	font-weight: 500;
+}
+
+.ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector {
+	border: none;
+	border-radius: 0px;
+	padding: 10px 10px 5px 4px !important;
+}

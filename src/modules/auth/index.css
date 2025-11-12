@@ -1,0 +1,257 @@
+.auth-background {
+  background: linear-gradient(135deg, rgba(13, 14, 44, 0.8) 0%, rgba(0, 0, 2, 0.6) 50%, rgba(7, 7, 16, 0.8) 100%), url('../../assets/allAssets/homePage.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+
+
+
+/* Floating Bubbles */
+.bubble {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  animation: float 8s infinite;
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.bubble:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  left: 10%;
+  animation: float 11s infinite, glow 4s infinite;
+  animation-delay: 0s;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+}
+
+.bubble:nth-child(2) {
+  width: 100px;
+  height: 100px;
+  left: 20%;
+  animation: float 12s infinite, pulse 3s infinite;
+  animation-delay: 1s;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.4);
+}
+
+.bubble:nth-child(3) {
+  width: 60px;
+  height: 60px;
+  left: 35%;
+  animation: float 10s infinite, rotate 8s infinite linear;
+  animation-delay: 2s;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.bubble:nth-child(4) {
+  width: 120px;
+  height: 120px;
+  left: 50%;
+  animation: float 13s infinite, wave 6s infinite;
+  animation-delay: 0.5s;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+  box-shadow: 0 0 60px rgba(255, 255, 255, 0.5);
+}
+
+.bubble:nth-child(5) {
+  width: 90px;
+  height: 90px;
+  left: 65%;
+  animation: float 11s infinite, shimmer 5s infinite;
+  animation-delay: 1.5s;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3));
+  box-shadow: 0 0 45px rgba(255, 255, 255, 0.4);
+}
+
+.bubble:nth-child(6) {
+  width: 70px;
+  height: 70px;
+  left: 80%;
+  animation: float 12s infinite, bounce 4s infinite;
+  animation-delay: 2.5s;
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.3);
+}
+
+/* Floating Shapes */
+.shape {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.2;
+  backdrop-filter: blur(5px);
+}
+
+.shape:nth-child(7) {
+  width: 40px;
+  height: 40px;
+  left: 15%;
+  top: 20%;
+  animation: floatShape 15s infinite, rotate 20s infinite linear;
+  background: rgba(255, 255, 255, 0.2);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.shape:nth-child(8) {
+  width: 60px;
+  height: 60px;
+  right: 20%;
+  top: 30%;
+  animation: floatShape 18s infinite, rotate 25s infinite linear reverse;
+  background: rgba(255, 255, 255, 0.2);
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(100vh) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(50vh) scale(1) rotate(180deg);
+  }
+  100% {
+    transform: translateY(-100px) scale(1) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes floatShape {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(50px, 50px) rotate(90deg);
+  }
+  50% {
+    transform: translate(0, 100px) rotate(180deg);
+  }
+  75% {
+    transform: translate(-50px, 50px) rotate(270deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wave {
+  0%, 100% {
+    border-radius: 50%;
+  }
+  50% {
+    border-radius: 30%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Login Box Animation */
+.login-box {
+  animation: fadeIn 1s ease-out;
+  transition: transform 0.3s ease;
+}
+
+.login-box:hover {
+  transform: translateY(-5px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Button Animation */
+.ant-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.ant-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+} 

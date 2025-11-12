@@ -1,0 +1,41 @@
+{
+	"ChitFundGroup": {
+		"mainHeader": "KYC & AML Compliance",
+		"tagTitle": "Active Chit Funds",
+		"subHeader": "Keep track of all the KYCs.",
+		"exportButton": "Export"
+	},
+	"Transactions": {
+		"mainHeader": "Transactions",
+		"subHeader": "Keep track of all the transactions.",
+		"exportButton": "Export",
+		"tagTitle": "Active Transactions"
+	},
+	"SmartContracts": {
+		"mainHeader": "Smart Contracts",
+		"subHeader": "Keep track of all the Smart Contracts.",
+		"exportButton": "Export",
+		"tagTitle": "Active Smart Contracts"
+	},
+	"KYCCompliance": {
+		"mainHeader": "KYC Compliance",
+		"subHeader": "Keep track of all the KYCs.",
+		"exportButton": "Export"
+	},
+	"DisputeResolution": {
+		"mainHeader": "Dispute Resolution ",
+		"subHeader": "Keep track of all the Disputes",
+		"exportButton": "Export"
+	},
+	"Login": {
+		"mainHeader": "Login",
+		"emailTitle": "Login",
+		"passwordTitle": "Password",
+		"emailInvalid": "Invalid email address",
+		"emailRequired": "Invalid email address",
+		"passwordInvalid": "Password must be at least 6 characters",
+		"passwordRequired": "Password is required",
+		"loginButton": "Login",
+		"invalidUserText": "Invalid User"
+	}
+}

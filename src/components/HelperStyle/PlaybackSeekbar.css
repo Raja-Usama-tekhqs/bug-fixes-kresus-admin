@@ -1,0 +1,159 @@
+:root {
+  --playback-seekbar: #f2f2f2;
+  --playback-seekbar-height: 2px;
+}
+
+#playback-seekbar-container-0 {
+  position: absolute;
+  bottom: 35px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  max-width: 325px;
+  height: 32px;
+  background-color: rgba(0, 0, 0, 0.66);
+  border-radius: 6px;
+  z-index: 1000;
+  display: none;
+  padding: 2px 10px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 5px rgba(146, 146, 146, 0.59);
+  align-items: center;
+}
+
+[data-tab='job_list'] #playback-seekbar-container-0 {
+  bottom: 50px;
+}
+
+#playback-seekbar-container-0.show-seekbar-box {
+  display: flex;
+}
+
+#playback-seekbar-container-0 * {
+  box-sizing: border-box;
+}
+
+#playback-seekbar-container-0 > * {
+  pointer-events: all;
+  margin-right: 10px;
+}
+
+#playback-seekbar-container-0 > *:last-child {
+  margin-right: 0;
+}
+
+#playback-seekbar-container-0 .btnpanel-playback-btn {
+  background: transparent;
+  outline: none;
+  border: none;
+  width: 20px;
+  padding: 4px 0;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.4s;
+}
+
+#playback-seekbar-container-0 .btnpanel-playback-btn:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#playback-seekbar-container-0 .btnpanel-playback-icon {
+  font-size: 12px;
+  color: #fff;
+}
+
+#playback-seekbar-container-0 .btnpanel-playback-speed-btn {
+  display: flex;
+  align-items: center;
+  width: 40px;
+  justify-content: center;
+  color: #fff;
+  font-size: 12px;
+  position: relative;
+}
+
+#playback-seekbar-container-0 .btnpanel-playback-speed-btn label {
+  margin-right: 2px;
+}
+
+#playback-seekbar-container-0 .btnpanel-playback-speed-btn span {
+  transform: rotate(90deg);
+  display: inline-block;
+  font-size: 8px;
+  color: #a0a0a0;
+}
+
+#playback-seekbar-container-0
+  .btnpanel-playback-speed-btn:hover
+  .btnpanel-playback-speed-container {
+  display: block;
+}
+
+#playback-seekbar-container-0 .btnpanel-playback-speed-container {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  padding-bottom: 5px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  overflow: hidden;
+  z-index: 1100; /* Ensure it's on top */
+}
+
+#playback-seekbar-container-0
+  .btnpanel-playback-speed-btn[disabled]:hover
+  .btnpanel-playback-speed-container {
+  display: none !important;
+}
+
+#playback-seekbar-container-0 .btnpanel-playback-speed-btn[disabled],
+#playback-seekbar-container-0 .btnpanel-playback-speed-btn[disabled] * {
+  cursor: not-allowed;
+}
+
+#playback-seekbar-container-0 .btnpanel-playback-speed-box {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-bottom: 2px;
+}
+
+#playback-seekbar-container-0 .btnpanel-playback-sub-button {
+  background: transparent;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.28);
+  width: 100%;
+  font-size: 12px;
+  padding: 3px 2px;
+  cursor: pointer;
+}
+
+#playback-seekbar-container-0 .btnpanel-playback-sub-button:last-child {
+  border-bottom: none;
+}
+
+#playback-seekbar-container-0 .btnpanel-playback-sub-button:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#playback-seekbar-container-0 .playback-no-record-found-box {
+  display: none;
+}
+
+#playback-seekbar-container-0.playback-no-record-found .playback-seekbar-box,
+#playback-seekbar-container-0.playback-no-record-found .btnpanel-playback-btn {
+  display: none !important;
+}
+
+#playback-seekbar-container-0.playback-no-record-found
+  .playback-no-record-found-box {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-size: 12px;
+  justify-content: center;
+  width: 100%;
+}
