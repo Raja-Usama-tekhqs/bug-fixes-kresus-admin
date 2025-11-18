@@ -74,6 +74,16 @@ const TransactionAnalytics: React.FC<TransactionAnalyticsProps> = ({
             preview={false}
           />
         );
+      case "btc-mainnet":
+        return (
+          <Image
+            src={kresusAssets.btcLogo}
+            alt="WorldChain"
+            width={32}
+            height={32}
+            preview={false}
+          />
+        );
       default:
         return <img src={kresusAssets?.sui} alt="" width={32} height={32} />;
     }

@@ -74,6 +74,16 @@ const VolumeAnalytics: React.FC<VolumeAnalyticsProps> = ({
             preview={false}
           />
         );
+      case "btc-mainnet":
+        return (
+          <Image
+            src={kresusAssets.btcLogo}
+            width={32}
+            height={32}
+            alt="WorldChain"
+            preview={false}
+          />
+        );
       default:
         return <img src={kresusAssets?.sui} alt="" width={32} height={32} />;
     }

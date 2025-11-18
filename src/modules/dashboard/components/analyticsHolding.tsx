@@ -101,10 +101,20 @@ export const chainIcon = (chain: string, size?: number) => {
           preview={false}
         />
       );
-    default:
+    case "sui-mainnet":
       return (
         <Image
           src={kresusAssets?.sui}
+          width={25}
+          height={30}
+          alt="WorldChain"
+          preview={false}
+        />
+      );
+    default:
+      return (
+        <Image
+          src={kresusAssets?.btcLogo}
           width={25}
           height={30}
           alt=""
