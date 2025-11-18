@@ -33,7 +33,7 @@ import arrowRight from "./allAssets/arrowRight.svg";
 import eyeIcon from "./allAssets/eyeIcon.svg";
 import copy from "./allAssets/copy.svg";
 import simpleEnvelope from "./allAssets/simpleEnvelope.svg";
-
+import btcLogo from "./allAssets/btcLogo.png";
 const kresusAssets = {
   BrytLogo: brytLogo,
   Avatar: avatar,
@@ -70,5 +70,6 @@ const kresusAssets = {
   eyeIcon: eyeIcon,
   copyIcon: copy,
   simpleEnvelope: simpleEnvelope,
+  btcLogo: btcLogo,
 };
 export { kresusAssets };
