@@ -72,6 +72,7 @@ const chainOptions = [
   { label: "Base Mainnet", value: "base-mainnet" },
   { label: "WorldChain Mainnet", value: "worldchain-mainnet" },
   { label: "Sui Mainnet", value: "sui-mainnet" },
+  { label: "Btc Mainnet", value: "btc-mainnet" },
 ];
 
 const addressOptions = [
