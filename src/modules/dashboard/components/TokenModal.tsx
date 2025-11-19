@@ -14,6 +14,7 @@ interface TokenModalProps {
   email: string;
   address: string;
   solana_address: string;
+  sui_address: string;
 }
 
 interface SpamTokensResponse {
@@ -38,7 +39,8 @@ const CHAIN_NAME_MAP: Record<string, string> = {
   "base-mainnet": "Base",
   "solana-mainnet": "Solana",
   "worldchain-mainnet": "WLD",
-  "sui-mainnet":"Sui"
+  "sui-mainnet": "Sui",
+  "btc-mainnet": "Btc",
 };
 
 const BALANCE_DECIMAL_PLACES = 6;
@@ -84,12 +86,10 @@ const CopyButton: React.FC<{
 
 const ChainSummaryCard: React.FC<{ summary: ChainSummary }> = ({ summary }) => (
   <div
-  
     key={summary.chain}
     className="chain-card flex flex-col gap-2"
     data-chain={summary.chain}
   >
-
     <div className="chain-header">
       <span className="chain-name">
         <span className="">{chainIcon(summary.chain, 12)} </span>
@@ -100,7 +100,6 @@ const ChainSummaryCard: React.FC<{ summary: ChainSummary }> = ({ summary }) => (
     <div className="chain-value">
       ${summary.total.toFixed(USD_DECIMAL_PLACES)}
     </div>
-   
   </div>
 );
 
@@ -113,13 +112,14 @@ const TokenModal: React.FC<TokenModalProps> = ({
   email,
   address,
   solana_address,
+  sui_address,
 }) => {
   const [activeMainTab, setActiveMainTab] = useState<string>("details");
 
   const [spamTokens, setSpamTokens] = useState<SpamTokensResponse | null>(null);
   const [spamLoading, setSpamLoading] = useState(false);
   const { getRequest } = useApiClient();
-console.log('here are the tokens.................',tokens)
+  console.log("here are the tokens.................", tokens);
   // Memoized values
   const totalTokenCount = useMemo(
     () => Object.values(tokens).reduce((sum, tokens) => sum + tokens.length, 0),
@@ -176,14 +176,17 @@ console.log('here are the tokens.................',tokens)
         ),
         dataIndex: "baseAddress",
         key: "baseAddress",
-        render: (text: string) => (
-          <span className="flex items-center">
-            <span className="font-roboto font-normal not-italic text-[14px] leading-[100%] tracking-[0] align-middle text-[#C7C7CC]">
-              {truncateAddress(text)}
+        render: (text: string) =>
+          text ? (
+            <span className="flex items-center">
+              <span className="font-roboto font-normal not-italic text-[14px] leading-[100%] tracking-[0] align-middle text-[#C7C7CC]">
+                {truncateAddress(text)}
+              </span>
+              <CopyButton text={text} onCopy={handleCopyAddress} />
             </span>
-            <CopyButton text={text} onCopy={handleCopyAddress} />
-          </span>
-        ),
+          ) : (
+            "-"
+          ),
       },
       {
         title: (
@@ -193,12 +196,33 @@ console.log('here are the tokens.................',tokens)
         ),
         dataIndex: "solanaAddress",
         key: "solanaAddress",
-        render: (text: string) => (
-          <span className="flex items-center">
-            {truncateAddress(text)}
-            <CopyButton text={text} onCopy={handleCopyAddress} />
+        render: (text: string) =>
+          text ? (
+            <span className="flex items-center">
+              {truncateAddress(text)}
+              <CopyButton text={text} onCopy={handleCopyAddress} />
+            </span>
+          ) : (
+            "-"
+          ),
+      },
+      {
+        title: (
+          <span className="font-roboto font-medium text-[14px] leading-[100%] tracking-[0] align-middle text-[#FFFFFF]">
+            Sui Address
           </span>
         ),
+        dataIndex: "suiAddress",
+        key: "suiAddress",
+        render: (text: string) =>
+          text ? (
+            <span className="flex items-center">
+              {truncateAddress(text)}
+              <CopyButton text={text} onCopy={handleCopyAddress} />
+            </span>
+          ) : (
+            "-"
+          ),
       },
     ],
     []
@@ -362,9 +386,10 @@ console.log('here are the tokens.................',tokens)
         email: email,
         baseAddress: address,
         solanaAddress: solana_address,
+        suiAddress: sui_address,
       },
     ],
-    [email, address, solana_address]
+    [email, address, solana_address, sui_address]
   );
 
   const activeTokensData = useMemo(() => {
@@ -406,7 +431,7 @@ console.log('here are the tokens.................',tokens)
     } finally {
       setSpamLoading(false);
     }
-  }, [address, solana_address]);
+  }, [address, solana_address, sui_address]);
 
   const handleCopyAddress = useCallback(async (text: string) => {
     try {
@@ -433,14 +458,14 @@ console.log('here are the tokens.................',tokens)
         key: "details",
         label: <div className="tab-label">Details</div>,
         children: (
-          <div className="mt-4 bg-[#161616] p-[16px] rounded-[24px]">
+          <div className="mt-4 bg-[#161616] p-[16px] rounded-[24px] overflow-x-auto ">
             <Table
               dataSource={detailsData}
               columns={detailsColumns}
               pagination={false}
-              size="small"
-              className="token-modal-table"
-              // scroll={TABLE_SCROLL_CONFIG}
+              size="large"
+              className="token-modal-table "
+              scroll={{ x: "auto" }}
             />
           </div>
         ),
@@ -518,7 +543,7 @@ console.log('here are the tokens.................',tokens)
       setSpamTokens(null);
       setSpamLoading(false);
     }
-  }, [isOpen, address, solana_address]);
+  }, [isOpen, address, solana_address, sui_address]);
 
   return (
     <Modal
@@ -540,9 +565,7 @@ console.log('here are the tokens.................',tokens)
     >
       {/* Chain Summary Cards */}
       <div className="chain-summary mb-6">
-        
         {chainSummaries.map((summary) => (
-          
           <ChainSummaryCard key={summary.chain} summary={summary} />
         ))}
         <div className="chain-card total-card flex flex-col gap-2">
@@ -575,5 +598,5 @@ console.log('here are the tokens.................',tokens)
     </Modal>
   );
 };
- 
+
 export default TokenModal;

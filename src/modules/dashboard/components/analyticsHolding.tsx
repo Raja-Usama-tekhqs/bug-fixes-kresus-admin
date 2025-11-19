@@ -38,6 +38,7 @@ interface User {
   email: string;
   address: string;
   solana_address: string;
+  sui_address: string;
   tokens: {
     [chain: string]: Token[];
   };
@@ -132,6 +133,8 @@ const formatChainName = (chain: string) => {
       return "Solana";
     case "worldchain-mainnet":
       return "WLD";
+    case "sui-mainnet":
+      return "Sui";
     default:
       return chain;
   }
@@ -270,6 +273,7 @@ const AnalyticsHolding: React.FC<AnalyticsHoldingProps> = ({ activeTab }) => {
     email: string;
     address: string;
     solana_address: string;
+    sui_address: string;
   } | null>(null);
   const [copiedAddress, setCopiedAddress] = useState<string | null>(null);
 
@@ -433,7 +437,7 @@ const AnalyticsHolding: React.FC<AnalyticsHoldingProps> = ({ activeTab }) => {
 
   const AddressCell: React.FC<{
     address: string;
-    type: "wallet" | "solana";
+    type: "wallet" | "solana" | "sui";
   }> = ({ address, type }) => {
     if (!address) return <span>-</span>;
 
@@ -830,6 +834,14 @@ const AnalyticsHolding: React.FC<AnalyticsHoldingProps> = ({ activeTab }) => {
                           ),
                         },
                         {
+                          title: "Sui Address",
+                          dataIndex: "sui_address",
+                          key: "sui_address",
+                          render: (sui_address) => (
+                            <AddressCell address={sui_address} type="sui" />
+                          ),
+                        },
+                        {
                           title: "Actions",
                           key: "actions",
                           align: "center",
@@ -843,6 +855,7 @@ const AnalyticsHolding: React.FC<AnalyticsHoldingProps> = ({ activeTab }) => {
                                   email: record.email,
                                   address: record.address,
                                   solana_address: record.solana_address,
+                                  sui_address: record.sui_address,
                                 })
                               }
                               className="text-[#4898F3] font-semibold underline hover:text-[#7D0BF4] !p-0"
@@ -1101,7 +1114,7 @@ const AnalyticsHolding: React.FC<AnalyticsHoldingProps> = ({ activeTab }) => {
                             <Table.Summary.Row className="total-row bg-[#2C2C2E] bg-[linear-gradient(90deg,rgba(255,255,255,0.08)_33.33%,rgba(255,255,255,0.18)_50%,rgba(255,255,255,0.08)_66.5%)]">
                               <Table.Summary.Cell
                                 index={0}
-                                colSpan={4}
+                                colSpan={5}
                                 className="font-roboto font-bold text-[16px] leading-[100%] tracking-[0] text-center text-[#FFFFFF]"
                               >
                                 Total AC in USD of above Data
@@ -1173,6 +1186,7 @@ const AnalyticsHolding: React.FC<AnalyticsHoldingProps> = ({ activeTab }) => {
           email={selectedUser.email}
           address={selectedUser.address}
           solana_address={selectedUser.solana_address}
+          sui_address={selectedUser.sui_address}
         />
       )}
     </div>
