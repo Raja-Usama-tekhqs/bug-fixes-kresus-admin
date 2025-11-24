@@ -424,7 +424,7 @@ const AnalyticsHolding: React.FC<AnalyticsHoldingProps> = ({ activeTab }) => {
 
   const handleCopyAddress = async (
     address: string,
-    type: "wallet" | "solana"
+    type: "wallet" | "solana" | "sui"
   ) => {
     try {
       await navigator.clipboard.writeText(address);
@@ -437,7 +437,7 @@ const AnalyticsHolding: React.FC<AnalyticsHoldingProps> = ({ activeTab }) => {
 
   const AddressCell: React.FC<{
     address: string;
-    type: "wallet" | "solana" | "sui";
+    type: "wallet" | "solana" | "sui" ;
   }> = ({ address, type }) => {
     if (!address) return <span>-</span>;
 
